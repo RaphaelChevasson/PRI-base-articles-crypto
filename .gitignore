@@ -103,8 +103,6 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-
-
 # Eclipse
 .classpath
 .project
@@ -114,6 +112,7 @@ venv.bak/
 .idea/
 *.iml
 *.iws
+*.ipr
 
 # Mac
 .DS_Store
@@ -121,3 +120,27 @@ venv.bak/
 # Maven
 log/
 target/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Gradle
+.gradle
+!gradle-wrapper.jar
+
+# Build
+out
+build
+bin
+
+# Other
+*.log
+*.swp
+*.bak
