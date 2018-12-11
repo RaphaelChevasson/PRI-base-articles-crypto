@@ -1,0 +1,1 @@
+https://api.archives-ouvertes.fr/search/?q=key&wt=bibtex
