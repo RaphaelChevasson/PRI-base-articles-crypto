@@ -1,9 +1,11 @@
 package fr.tse.fise3.pri.p002.server.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Date;
 import java.math.BigInteger;
+import java.util.Date;
 import java.util.List;
 
 
@@ -22,10 +24,8 @@ public class Post implements Serializable {
 	@Column(name="POST_ID")
 	private BigInteger postId;
 
+	@Lob
 	private String address;
-
-	@Column(name="AUTHOR_ID")
-	private BigInteger authorId;
 
 	@Temporal(TemporalType.DATE)
 	private Date date;
@@ -60,14 +60,6 @@ public class Post implements Serializable {
 		)
 	private List<Category> categories;
 
-	//bi-directional many-to-one association to PostsAuthor
-	@OneToMany(mappedBy="post")
-	private List<PostsAuthor> postsAuthors;
-
-	//bi-directional many-to-one association to PostsCatergory
-	@OneToMany(mappedBy="post")
-	private List<PostsCatergory> postsCatergories;
-
 	//bi-directional many-to-many association to Keyword
 	@ManyToMany
 	@JoinTable(
@@ -80,6 +72,19 @@ public class Post implements Serializable {
 			}
 		)
 	private List<Keyword> keywords;
+
+	//bi-directional many-to-one association to PostsAuthor
+	@OneToMany(mappedBy="post")
+	private List<PostsAuthor> postsAuthors;
+
+	//bi-directional many-to-one association to PostsCatergory
+	@OneToMany(mappedBy="post")
+	private List<PostsCatergory> postsCatergories;
+
+	//bi-directional many-to-one association to PostsKeyword
+	@OneToMany(mappedBy="post")
+	@JsonIgnore
+	private List<PostsKeyword> postsKeywords;
 
 	public Post() {
 	}
@@ -98,14 +103,6 @@ public class Post implements Serializable {
 
 	public void setAddress(String address) {
 		this.address = address;
-	}
-
-	public BigInteger getAuthorId() {
-		return this.authorId;
-	}
-
-	public void setAuthorId(BigInteger authorId) {
-		this.authorId = authorId;
 	}
 
 	public Date getDate() {
@@ -146,6 +143,14 @@ public class Post implements Serializable {
 
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
+	}
+
+	public List<Keyword> getKeywords() {
+		return this.keywords;
+	}
+
+	public void setKeywords(List<Keyword> keywords) {
+		this.keywords = keywords;
 	}
 
 	public List<PostsAuthor> getPostsAuthors() {
@@ -192,12 +197,26 @@ public class Post implements Serializable {
 		return postsCatergory;
 	}
 
-	public List<Keyword> getKeywords() {
-		return this.keywords;
+	public List<PostsKeyword> getPostsKeywords() {
+		return this.postsKeywords;
 	}
 
-	public void setKeywords(List<Keyword> keywords) {
-		this.keywords = keywords;
+	public void setPostsKeywords(List<PostsKeyword> postsKeywords) {
+		this.postsKeywords = postsKeywords;
+	}
+
+	public PostsKeyword addPostsKeyword(PostsKeyword postsKeyword) {
+		getPostsKeywords().add(postsKeyword);
+		postsKeyword.setPost(this);
+
+		return postsKeyword;
+	}
+
+	public PostsKeyword removePostsKeyword(PostsKeyword postsKeyword) {
+		getPostsKeywords().remove(postsKeyword);
+		postsKeyword.setPost(null);
+
+		return postsKeyword;
 	}
 
 }
