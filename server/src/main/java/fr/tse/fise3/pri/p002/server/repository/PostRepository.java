@@ -5,5 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.math.BigInteger;
 
-public interface PostRepository  extends JpaRepository<Post, BigInteger> {
+public interface PostRepository extends JpaRepository<Post, BigInteger> {
+
+    boolean existsByUrl(String url);
+
 }

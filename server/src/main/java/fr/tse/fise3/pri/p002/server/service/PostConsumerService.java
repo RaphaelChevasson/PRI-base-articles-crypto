@@ -15,17 +15,12 @@ public class PostConsumerService implements Runnable {
         try {
             currentPost = PostProducerService.POST_BLOCKING_QUEUE.take();
             while (currentPost != PostProducerService.POST_POISON_PILL) {
-                System.out.println(currentPost);
-                postService.savePost(currentPost);
+                Post post = postService.savePost(currentPost);
                 currentPost = PostProducerService.POST_BLOCKING_QUEUE.take();
             }
 
-
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println(currentPost.getAuthors());
-            System.out.println(currentPost.getTitle());
         }
-
     }
 }

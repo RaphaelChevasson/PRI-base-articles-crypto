@@ -29,6 +29,9 @@ public class PostProducerService implements Runnable {
     @Autowired
     private KeywordService keywordService;
 
+    @Autowired
+    private PostService postService;
+
     public PostProducerService() {
     }
 
@@ -41,12 +44,22 @@ public class PostProducerService implements Runnable {
             Elements elements = document.select("body > dl > dt > a:nth-child(1)");
             int i = 0;
             for (Element element : elements) {
-                Document pageDocument = Jsoup.connect("https://eprint.iacr.org" + element.attr("href")).get();
+                String postUrl = "https://eprint.iacr.org" + element.attr("href");
+                Document pageDocument = Jsoup.connect(postUrl).get();
+
 
                 Elements pageBody = pageDocument.select("body");
 
+                String title = pageDocument.select("body > b").first().text().toLowerCase().trim();
+
+                if (postService.postExistsByUrl(postUrl)) {
+                    System.out.println("POST_ALREADY_EXISTS_BY_URL");
+                    continue;
+                }
+
                 Post post = new Post();
-                post.setTitle(pageDocument.select("body > b").first().text());
+                post.setTitle(title);
+                post.setUrl(postUrl);
 
                 for (int j = 0; ; j++) {
                     if (pageBody.get(0).child(j).text().contains("Category / Keywords")) {
