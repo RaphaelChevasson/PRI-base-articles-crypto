@@ -1,5 +1,6 @@
 import unicodedata
 import re
+import sys
 
 # {string_to_replace, replacement} dictionary
 latex_commands = {
@@ -32,23 +33,36 @@ latex_commands = {
     r'\}': '}'
 }
 
+def get_replacement(unicode_expression, matchgroup):
+    matched_caracter = matchgroup.group(1) # caracter which take the place of '(.)'
+    replacement_unicode_caracter_name = unicode_expression.replace('(.)', unicodedata.name(matched_caracter))
+    try: # try to get the unicode caracter corresponding to unicode_caracter_name
+        replacement_caracter = unicodedata.lookup(replacement_unicode_caracter_name)
+    except KeyError as e:
+        print('Cannot find unicode for', replacement_unicode_caracter_name,
+              ', using', matchgroup.group(1), 'instead', file = sys.stderr)
+        replacement_caracter = matchgroup.group(1)
+    return replacement_caracter
+
 # {regex: replacement} dictionary
 latex_commands_whith_parametter = {
-    r"\\'(.)": lambda matchgroup : unicodedata.lookup(unicodedata.name(matchgroup.group(1)) + ' WITH ACUTE'),
-    r'\\`(.)': lambda matchgroup : unicodedata.lookup(unicodedata.name(matchgroup.group(1)) + ' WITH GRAVE'),
-    r'\\^(.)': lambda matchgroup : unicodedata.lookup(unicodedata.name(matchgroup.group(1)) + ' WITH CIRCUMFLEX'),
-    r'\\"(.)': lambda matchgroup : unicodedata.lookup(unicodedata.name(matchgroup.group(1)) + ' WITH DIAERESIS'),
-    r'\\H(.)': lambda matchgroup : unicodedata.lookup(unicodedata.name(matchgroup.group(1)) + ' WITH DOUBLE ACUTE'),
-    r'\\~(.)': lambda matchgroup : unicodedata.lookup(unicodedata.name(matchgroup.group(1)) + ' WITH TILDE'),
-    r'\\c(.)': lambda matchgroup : unicodedata.lookup(unicodedata.name(matchgroup.group(1)) + ' WITH CEDILLA'),
-    r'\\k(.)': lambda matchgroup : unicodedata.lookup(unicodedata.name(matchgroup.group(1)) + ' WITH OGONEK'),
-    r'\\=(.)': lambda matchgroup : unicodedata.lookup(unicodedata.name(matchgroup.group(1)) + ' WITH MACRON'),
-    r'\\.(.)': lambda matchgroup : unicodedata.lookup(unicodedata.name(matchgroup.group(1)) + ' WITH DOT ABOVE'),
-    r'\\d(.)': lambda matchgroup : unicodedata.lookup(unicodedata.name(matchgroup.group(1)) + ' WITH DOT BELOW'),
-    r'\\r(.)': lambda matchgroup : unicodedata.lookup(unicodedata.name(matchgroup.group(1)) + ' WITH RING ABOVE'),
-    r'\\u(.)': lambda matchgroup : unicodedata.lookup(unicodedata.name(matchgroup.group(1)) + ' WITH BREVE'),
-    r'\\v(.)': lambda matchgroup : unicodedata.lookup(unicodedata.name(matchgroup.group(1)) + ' WITH CARON'),
-    r'\\textcircled(.)': lambda matchgroup : unicodedata.lookup(unicodedata.name('CIRCLED ' + matchgroup.group(1)))
+    r"\\'(.)": lambda matchgroup : get_replacement('(.) WITH ACUTE', matchgroup),
+    r'\\`(.)': lambda matchgroup : get_replacement('(.) WITH GRAVE', matchgroup),
+    r'\\^(.)': lambda matchgroup : get_replacement('(.) WITH CIRCUMFLEX', matchgroup),
+    r'\\"(.)': lambda matchgroup : get_replacement('(.) WITH DIAERESIS', matchgroup),
+    r'\\H(.)': lambda matchgroup : get_replacement('(.) WITH DOUBLE ACUTE', matchgroup),
+    r'\\~(.)': lambda matchgroup : get_replacement('(.) WITH TILDE', matchgroup),
+    r'\\c(.)': lambda matchgroup : get_replacement('(.) WITH CEDILLA', matchgroup),
+    r'\\k(.)': lambda matchgroup : get_replacement('(.) WITH OGONEK', matchgroup),
+    r'\\=(.)': lambda matchgroup : get_replacement('(.) WITH MACRON', matchgroup),
+    r'\\\.(.)': lambda matchgroup : get_replacement('(.) WITH DOT ABOVE', matchgroup),
+    r'\\d(.)': lambda matchgroup : get_replacement('(.) WITH DOT BELOW', matchgroup),
+    r'\\r(.)': lambda matchgroup : get_replacement('(.) WITH RING ABOVE', matchgroup),
+    r'\\u(.)': lambda matchgroup : get_replacement('(.) WITH BREVE', matchgroup),
+    r'\\v(.)': lambda matchgroup : get_replacement('(.) WITH CARON', matchgroup),
+    r'\\textcircled(.)': lambda matchgroup : get_replacement('CIRCLED (.)', matchgroup),
+        # we need to escape the '.' and '\' to match the litteral '.' and '\'
+        # the '(.)' match any one caracter and enable us to retriview it as a matchgroup
 }
 
 def latex_to_unicode(s):
