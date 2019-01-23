@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { HttpRequestService } from './services/http-request.service';
+import { Component, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 
@@ -11,6 +10,9 @@ import { NgForm } from '@angular/forms';
 export class AppComponent {
 
 
+  public size = 10;
+  public currentPage = 0;
+  public totalPages = 0;
 
   public searchText = '';
 
@@ -18,12 +20,17 @@ export class AppComponent {
 
   public postList: any = [];
 
+  @ViewChild('searchForm')
+  private searchForm: NgForm;
+
 
   constructor(private httpClient: HttpClient) {
 
-    this.httpClient.get('/api/posts').subscribe((response) => {
-      console.log(response);
-      this.postList = response;
+    this.httpClient.get(`/api/posts?page=${this.currentPage}&size=${this.size}`).subscribe((response: any) => {
+      console.log(response.content);
+      this.postList = response.content;
+      this.totalPages = response.totalPages;
+      this.currentPage = response.number;
     });
 
   }
@@ -47,13 +54,27 @@ export class AppComponent {
       default: break;
     }
 
-    this.httpClient.get('/api/posts/search?tag=' + tag + '&value=' + form.form.value['searchText'])
-      .subscribe((response) => {
+    this.httpClient.get(`/api/posts/search?tag=${tag}&value=${form.form.value['searchText']}&page=${this.currentPage}&size=${this.size}`)
+      .subscribe((response: any) => {
         console.log(response);
-        this.postList = response;
+        this.postList = response.content;
+        this.totalPages = response.totalPages;
+        this.currentPage = response.number;
       });
 
+  }
 
+  nextPage() {
+    this.currentPage++;
+    this.search(this.searchForm);
+  }
+
+  previousPage() {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+      this.search(this.searchForm);
+
+    }
   }
 
 

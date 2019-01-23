@@ -10,12 +10,9 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.math.BigInteger;
+import java.util.*;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
@@ -67,13 +64,12 @@ public class PostProducerService implements Runnable {
                         keywords = StringUtils.substringBefore(keywords, "<");
                         keywords = StringUtils.substringBefore(keywords, "received");
 
-                        List<Keyword> keywordList = new ArrayList<>();
+                        Map<BigInteger, Keyword> kaywordMap = new HashMap<>();
                         for (String keywordString : StringUtils.split(keywords, ",;")) {
                             Keyword savedKeyword = keywordService.findOrCreateByName(keywordString.toLowerCase().trim());
-                            keywordList.add(savedKeyword);
+                            kaywordMap.put(savedKeyword.getKeywordId(), savedKeyword);
                         }
-
-                        post.setKeywords(keywordList);
+                        post.setKeywords(new ArrayList<>(kaywordMap.values()));
                     }
                     if (pageBody.get(0).child(j).text().contains("Date:")) {
                         String date = pageBody.get(0).child(j).nextSibling().toString();
@@ -84,6 +80,7 @@ public class PostProducerService implements Runnable {
                     }
                     if (pageBody.get(0).child(j).text().contains("Contact author:")) {
                         String authorString = pageBody.get(0).child(j).nextSibling().toString();
+                        // todo split author string
                         Author author = authorService.findOrCreateByName(authorString.toLowerCase().trim());
                         post.setAuthors(Collections.singletonList(author));
                         break;

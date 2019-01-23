@@ -25,7 +25,7 @@ public class KeywordService {
 
         Keyword keyword = new Keyword();
         keyword.setKeywordName(name);
-        return keywordRepository.save(keyword);
+        return keywordRepository.saveAndFlush(keyword);
     }
 
 

@@ -4,19 +4,23 @@ import fr.tse.fise3.pri.p002.server.dto.PostDTO;
 import fr.tse.fise3.pri.p002.server.model.Author;
 import fr.tse.fise3.pri.p002.server.model.Keyword;
 import fr.tse.fise3.pri.p002.server.model.Post;
+import fr.tse.fise3.pri.p002.server.service.HalApiService;
 import fr.tse.fise3.pri.p002.server.service.PostConsumerService;
 import fr.tse.fise3.pri.p002.server.service.PostProducerService;
 import fr.tse.fise3.pri.p002.server.service.PostService;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
-import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.stream.Collectors;
@@ -33,10 +37,14 @@ public class HomeController {
     private ModelMapper modelMapper = new ModelMapper();
     @Autowired
     private PostService postService;
+    @Autowired
+    private HalApiService halApiService;
+
+    private Converter<Post, PostDTO> converter;
 
 
     public HomeController() {
-        Converter<Post, PostDTO> converter = context -> {
+        converter = context -> {
             PostDTO dto = new PostDTO();
             dto.setTitle(context.getSource().getTitle());
             dto.setAuthors(context.getSource().getAuthors().stream().map(Author::getAuthorName).collect(Collectors.toList()));
@@ -51,22 +59,24 @@ public class HomeController {
 
 
     @GetMapping("/posts")
-    public List<PostDTO> findAllPosts() {
-        return postService.findAllPosts().stream().map(post -> modelMapper.map(post, PostDTO.class)).collect(Collectors.toList()).subList(0, 10);
+    public Page<PostDTO> findAllPosts(@RequestParam int page, @RequestParam int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return postService.findAllPosts(pageable).map(post -> modelMapper.map(post, PostDTO.class));
     }
 
     @GetMapping("/posts/search")
-    public List<PostDTO> findPostsByTileLike(@RequestParam String tag, @RequestParam String value) {
+    public Page<PostDTO> findPostsByTileLike(@RequestParam String tag, @RequestParam String value, @RequestParam int page, @RequestParam int size) {
+        Pageable pageable = PageRequest.of(page, size);
         switch (tag) {
             case "title":
-                return postService.findPostByTitleLike(value).stream().map(post -> modelMapper.map(post, PostDTO.class)).collect(Collectors.toList());
+                return postService.findPostByTitleLike(value, pageable).map(post -> modelMapper.map(post, PostDTO.class));
 
             case "author":
-                return postService.findByAuthors_authorNameContaining(value).stream().map(post -> modelMapper.map(post, PostDTO.class)).collect(Collectors.toList());
+                return postService.findByAuthors_authorNameContaining(value, pageable).map(post -> modelMapper.map(post, PostDTO.class));
             case "keywords":
-                return postService.findByKeywords_keywordNameContaining(value).stream().map(post -> modelMapper.map(post, PostDTO.class)).collect(Collectors.toList());
+                return postService.findByKeywords_keywordNameContaining(value, pageable).map(post -> modelMapper.map(post, PostDTO.class));
             default:
-                return Collections.emptyList();
+                return new PageImpl<>(Collections.emptyList());
         }
     }
 
@@ -80,6 +90,10 @@ public class HomeController {
 
         postProducerThread.start();
         postConsumerThread.start();
+
+
+        halApiService.start();
+
 
         return "Start";
 
