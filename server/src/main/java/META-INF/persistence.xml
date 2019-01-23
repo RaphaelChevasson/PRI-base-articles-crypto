@@ -9,6 +9,7 @@
 		<class>fr.tse.fise3.pri.p002.server.model.PostsAuthorPK</class>
 		<class>fr.tse.fise3.pri.p002.server.model.PostsCatergory</class>
 		<class>fr.tse.fise3.pri.p002.server.model.PostsCatergoryPK</class>
-
+		<class>fr.tse.fise3.pri.p002.server.model.PostsKeyword</class>
+		<class>fr.tse.fise3.pri.p002.server.model.PostsKeywordPK</class>
 	</persistence-unit>
 </persistence>

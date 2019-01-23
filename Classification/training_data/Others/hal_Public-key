@@ -1,0 +1,22 @@
+
+
+@inproceedings{liu:hal-01587839,
+  TITLE = {{Short and Efficient Certificate-Based Signature}},
+  AUTHOR = {Liu, Joseph K. and Bao, Feng and Zhou, Jianying},
+  URL = {https://hal.inria.fr/hal-01587839},
+  NOTE = {Part 3: - WCNS 2011 Workshop},
+  BOOKTITLE = {{International IFIP TC 6 Workshops PE-CRN, NC-Pro, WCNS, and SUNSET 2011 Held at NETWORKING 2011 (NETWORKING)}},
+  ADDRESS = {Valencia, Spain},
+  EDITOR = {Vicente Casares-Giner and Pietro Manzoni and Ana Pont},
+  PUBLISHER = {{Springer}},
+  SERIES = {NETWORKING 2011 Workshops},
+  VOLUME = {LNCS-6827},
+  PAGES = {167-178},
+  YEAR = {2011},
+  MONTH = May,
+  DOI = {10.1007/978-3-642-23041-7\_17},
+  PDF = {https://hal.inria.fr/hal-01587839/file/978-3-642-23041-7_17_Chapter.pdf},
+  HAL_ID = {hal-01587839},
+  HAL_VERSION = {v1},
+}
+

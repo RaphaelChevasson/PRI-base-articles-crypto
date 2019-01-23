@@ -1,0 +1,146 @@
+@phdthesis{gaspar:tel-00978472,
+  TITLE = {{Crypto-processor -- architecture, programming and evaluation of the security}},
+  AUTHOR = {Gaspar, Lubos},
+  URL = {https://tel.archives-ouvertes.fr/tel-00978472},
+  NUMBER = {2012STET4023},
+  SCHOOL = {{Universit{\'e} Jean Monnet - Saint-Etienne}},
+  YEAR = {2012},
+  MONTH = Nov,
+  KEYWORDS = {Secure reconfiguration ; Separation rules ; Secure key management ; Secure crypto-coprocessor ; Secure crypto-processor ; Crypto-processeur s{\'e}curis{\'e} ; Crypto-coprocessuer s{\'e}curis{\'e} ; Gestion s{\'e}curis{\'e}e des cl{\'e}s ; R{\`e}gles de s{\'e}paration ; HCrypt ; Reconfiguration s{\'e}curis{\'e}e ; FPGA},
+  TYPE = {Theses},
+  PDF = {https://tel.archives-ouvertes.fr/tel-00978472/file/These-Gaspar-Lubos-2012.pdf},
+  HAL_ID = {tel-00978472},
+  HAL_VERSION = {v1},
+}
+
+@phdthesis{farajallah:tel-01179610,
+  TITLE = {{Chaos-based crypto and joint crypto-compression systems for images and videos}},
+  AUTHOR = {Farajallah, Mousa},
+  URL = {https://hal.archives-ouvertes.fr/tel-01179610},
+  SCHOOL = {{UNIVERSITE DE NANTES}},
+  YEAR = {2015},
+  MONTH = Jun,
+  KEYWORDS = {Chaos-based cryptosystems ; Chaos-based joint crypto-compression systems ; Chaos-based selective encryption ; Cryptosyst{\`e}mes bas{\'e}s chaos ; Syst{\`e}mes de crypto-compression conjoints ; HEVC ; SHVC ; Chiffrement s{\'e}lectif bas{\'e} chaos ; Performances},
+  TYPE = {Theses},
+  PDF = {https://hal.archives-ouvertes.fr/tel-01179610/file/UN_These_Farajallah_vf.pdf},
+  HAL_ID = {tel-01179610},
+  HAL_VERSION = {v1},
+}
+
+@article{dinatale:lirmm-00365359,
+  TITLE = {{Self-Test Techniques for Crypto-Devices}},
+  AUTHOR = {Di Natale, Giorgio and Doulcier, Marion and Flottes, Marie-Lise and Rouzeyre, Bruno},
+  URL = {https://hal-lirmm.ccsd.cnrs.fr/lirmm-00365359},
+  JOURNAL = {{IEEE Transactions on Very Large Scale Integration (VLSI) Systems}},
+  PUBLISHER = {{IEEE}},
+  VOLUME = {18},
+  NUMBER = {2},
+  PAGES = {329-333},
+  YEAR = {2009},
+  DOI = {10.1109/TVLSI.2008.2010045},
+  KEYWORDS = {Self-Testing ; Digital Circuit Testing ; Security},
+  HAL_ID = {lirmm-00365359},
+  HAL_VERSION = {v1},
+}
+
+@unpublished{houy:halshs-00945053,
+  TITLE = {{It will cost you nothing to ''kill'' a Proof-of-Stake crypto-currency}},
+  AUTHOR = {Houy, Nicolas},
+  URL = {https://halshs.archives-ouvertes.fr/halshs-00945053},
+  NOTE = {working paper or preprint},
+  HAL_LOCAL_REFERENCE = {Working paper GATE 2014-04},
+  YEAR = {2014},
+  MONTH = Feb,
+  KEYWORDS = {Bitcoin ; protocol ; proof of work ; proof of stake ; 51% attack},
+  PDF = {https://halshs.archives-ouvertes.fr/halshs-00945053/file/1404.pdf},
+  HAL_ID = {halshs-00945053},
+  HAL_VERSION = {v1},
+}
+
+@incollection{marc:halshs-00123314,
+  TITLE = {{articles : ''Agora''; ''Forum''; ''Urbanisme (monde gr{\'e}co-romain, y compris ''rues'', ''crypto-portiques'' et ''jardins''); ''Arc et Vo{\^u}te''; ''Arc Monumental''; ''Thasos''; ''Le Pir{\'e}e''}},
+  AUTHOR = {Marc, Jean-Yves},
+  URL = {https://halshs.archives-ouvertes.fr/halshs-00123314},
+  BOOKTITLE = {{Dictionnaie de l'Antiquit{\'e} gr{\'e}co-romaine}},
+  PUBLISHER = {{PUF, Paris}},
+  PAGES = {xxx},
+  YEAR = {2005},
+  KEYWORDS = {agora ; forum ; urbanisme ; crypto-portiques ; arc ; vo{\^u}te ; Thasos ; Le Pir{\'e}e},
+  HAL_ID = {halshs-00123314},
+  HAL_VERSION = {v1},
+}
+
+
+@inproceedings{smilga:in2p3-00289263,
+  TITLE = {{Crypto-hermiticity and crypto-supersymmetry of non-anticommuting hamiltonians}},
+  AUTHOR = {Smilga, A.V.},
+  URL = {http://hal.in2p3.fr/in2p3-00289263},
+  BOOKTITLE = {{15th International Seminar on High Energy Physics QUARKS'2008}},
+  ADDRESS = {Sergiev Posad, Russia},
+  YEAR = {2008},
+  MONTH = May,
+  HAL_ID = {in2p3-00289263},
+  HAL_VERSION = {v1},
+}
+
+
+@unpublished{tichit:halshs-01467329,
+  TITLE = {{Les monnaies virtuelles d{\'e}centralis{\'e}es sont-elles des outils d'avenir ?}},
+  AUTHOR = {Tichit, Ariane and Lafourcade, Pascal and MAZENOD, Vincent},
+  URL = {https://halshs.archives-ouvertes.fr/halshs-01467329},
+  NOTE = {working paper or preprint},
+  HAL_LOCAL_REFERENCE = {2017.04},
+  YEAR = {2017},
+  MONTH = Feb,
+  KEYWORDS = {Decentralized virtual currencies ; Crypto-currencies ; LETs ; Social currencies ; Monetary innovations.},
+  PDF = {https://halshs.archives-ouvertes.fr/halshs-01467329/file/2017.04.pdf},
+  HAL_ID = {halshs-01467329},
+  HAL_VERSION = {v1},
+}
+
+@unpublished{bouoiyour:hal-01880330,
+  TITLE = {{What Determines Bitcoin's Value?}},
+  AUTHOR = {Bouoiyour, Jamal and Selmi, Refk and Tiwari, Aviral Kumar and OLAYENI, Olaolu Richard},
+  URL = {https://hal-univ-pau.archives-ouvertes.fr/hal-01880330},
+  NOTE = {working paper or preprint},
+  YEAR = {2018},
+  MONTH = Sep,
+  KEYWORDS = {Crypto market ; Bitcoin price ; Empirical mode decomposition},
+  PDF = {https://hal-univ-pau.archives-ouvertes.fr/hal-01880330/file/2364F_2014_2015_13docWCATT_Bitcoin_Value_JBouoiyour_RSelmi_AKTiwari_OROlayeni.pdf},
+  HAL_ID = {hal-01880330},
+  HAL_VERSION = {v1},
+}
+
+
+@unpublished{yende:cel-01965300,
+  TITLE = {{SUPPORT DE COURS DE S{\'E}CURIT{\'E} INFORMATIQUE ET CRYPTO.}},
+  AUTHOR = {YENDE, RAPHAEL Grevisse},
+  URL = {https://hal.archives-ouvertes.fr/cel-01965300},
+  NOTE = {Lecture},
+  TYPE = {Master},
+  ADDRESS = {Congo - Kinshasa},
+  YEAR = {2018},
+  MONTH = Oct,
+  PDF = {https://hal.archives-ouvertes.fr/cel-01965300/file/COURS%20DE%20SECURITE%20INFORMATIQUE%20By%20Prof.%20YENDE%20RG%20%281%29.pdf},
+  HAL_ID = {cel-01965300},
+  HAL_VERSION = {v1},
+}
+
+
+
+
+@inproceedings{bouzarou:halshs-01153663,
+  TITLE = {{Les crypto-ZEP en milieu rural}},
+  AUTHOR = {Bouzarou, Nadine},
+  URL = {https://halshs.archives-ouvertes.fr/halshs-01153663},
+  BOOKTITLE = {{International Conference of Territorial Intelligence ''Education and Territories: Contexts, Organizations and School Trajectories''}},
+  ADDRESS = {Digne-les-bains, France},
+  YEAR = {2007},
+  MONTH = Nov,
+  KEYWORDS = {Territorial Intelligence ; Intelligence territoriale},
+  HAL_ID = {halshs-01153663},
+  HAL_VERSION = {v1},
+}
+
+
+

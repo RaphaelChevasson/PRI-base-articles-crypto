@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -35,7 +36,6 @@ public class PostProducerService implements Runnable {
     public PostProducerService() {
     }
 
-    @Transactional
     public void run() {
 
         try {
@@ -85,14 +85,14 @@ public class PostProducerService implements Runnable {
                     if (pageBody.get(0).child(j).text().contains("Contact author:")) {
                         String authorString = pageBody.get(0).child(j).nextSibling().toString();
                         Author author = authorService.findOrCreateByName(authorString.toLowerCase().trim());
-                        post.setAuthorId(author.getAuthorId());
+                        post.setAuthors(Collections.singletonList(author));
                         break;
                     }
                 }
 
                 POST_BLOCKING_QUEUE.put(post);
 
-                if (++i == 10) {
+                if (++i == 500) {
                     POST_BLOCKING_QUEUE.put(POST_POISON_PILL);
                     break;
                 }

@@ -1,0 +1,13 @@
+@phdthesis{phan:pastel-00001442,
+  TITLE = {{Security and Efficiency of Cryptographic Schemes.}},
+  AUTHOR = {Phan, Duong Hieu},
+  URL = {https://pastel.archives-ouvertes.fr/pastel-00001442},
+  SCHOOL = {{Ecole Polytechnique X}},
+  YEAR = {2005},
+  MONTH = Sep,
+  KEYWORDS = {Cryptology ; Provable Security ; Public--key Encryption ; Random Oracle Model ; Universal Padding ; Traitor Tracing ; Pairings. ; Tra{\c c}age de tra{\^i}tres ; Couplages. ; Cryptologie ; S{\'e}curit{\'e} prouv{\'e}e ; Chiffrement {\`a} clef publique ; Mod{\`e}le de l'oracle al{\'e}atoire ; Padding universel},
+  TYPE = {Theses},
+  PDF = {https://pastel.archives-ouvertes.fr/pastel-00001442/file/PHAN.pdf},
+  HAL_ID = {pastel-00001442},
+  HAL_VERSION = {v1},
+}
