@@ -1,3 +1,7 @@
+# Folders containing downloaded data
+Classification/data/
+DATA_BASE_DUMP/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
