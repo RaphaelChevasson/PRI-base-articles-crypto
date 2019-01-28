@@ -37,10 +37,6 @@ public class Category implements Serializable {
 	@ManyToMany(mappedBy="categories")
 	private List<Post> posts;
 
-	//bi-directional many-to-one association to PostsCatergory
-	@OneToMany(mappedBy="category")
-	private List<PostsCatergory> postsCatergories;
-
 	public Category() {
 	}
 
@@ -96,28 +92,6 @@ public class Category implements Serializable {
 
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
-	}
-
-	public List<PostsCatergory> getPostsCatergories() {
-		return this.postsCatergories;
-	}
-
-	public void setPostsCatergories(List<PostsCatergory> postsCatergories) {
-		this.postsCatergories = postsCatergories;
-	}
-
-	public PostsCatergory addPostsCatergory(PostsCatergory postsCatergory) {
-		getPostsCatergories().add(postsCatergory);
-		postsCatergory.setCategory(this);
-
-		return postsCatergory;
-	}
-
-	public PostsCatergory removePostsCatergory(PostsCatergory postsCatergory) {
-		getPostsCatergories().remove(postsCatergory);
-		postsCatergory.setCategory(null);
-
-		return postsCatergory;
 	}
 
 }
