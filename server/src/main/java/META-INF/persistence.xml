@@ -5,11 +5,7 @@
 		<class>fr.tse.fise3.pri.p002.server.model.Category</class>
 		<class>fr.tse.fise3.pri.p002.server.model.Keyword</class>
 		<class>fr.tse.fise3.pri.p002.server.model.Post</class>
-		<class>fr.tse.fise3.pri.p002.server.model.PostsAuthor</class>
-		<class>fr.tse.fise3.pri.p002.server.model.PostsAuthorPK</class>
-		<class>fr.tse.fise3.pri.p002.server.model.PostsCatergory</class>
-		<class>fr.tse.fise3.pri.p002.server.model.PostsCatergoryPK</class>
-		<class>fr.tse.fise3.pri.p002.server.model.PostsKeyword</class>
-		<class>fr.tse.fise3.pri.p002.server.model.PostsKeywordPK</class>
+		<class>fr.tse.fise3.pri.p002.server.model.KnownUrl</class>
+
 	</persistence-unit>
 </persistence>

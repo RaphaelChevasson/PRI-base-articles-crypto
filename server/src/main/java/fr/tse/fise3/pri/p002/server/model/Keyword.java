@@ -32,10 +32,6 @@ public class Keyword implements Serializable {
 	@ManyToMany(mappedBy="keywords")
 	private List<Post> posts;
 
-	//bi-directional many-to-one association to PostsKeyword
-	@OneToMany(mappedBy="keyword")
-	private List<PostsKeyword> postsKeywords;
-
 	public Keyword() {
 	}
 
@@ -78,28 +74,6 @@ public class Keyword implements Serializable {
 
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
-	}
-
-	public List<PostsKeyword> getPostsKeywords() {
-		return this.postsKeywords;
-	}
-
-	public void setPostsKeywords(List<PostsKeyword> postsKeywords) {
-		this.postsKeywords = postsKeywords;
-	}
-
-	public PostsKeyword addPostsKeyword(PostsKeyword postsKeyword) {
-		getPostsKeywords().add(postsKeyword);
-		postsKeyword.setKeyword(this);
-
-		return postsKeyword;
-	}
-
-	public PostsKeyword removePostsKeyword(PostsKeyword postsKeyword) {
-		getPostsKeywords().remove(postsKeyword);
-		postsKeyword.setKeyword(null);
-
-		return postsKeyword;
 	}
 
 }

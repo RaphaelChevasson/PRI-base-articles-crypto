@@ -40,7 +40,7 @@
         <small>{{post.date}}</small>
       </div>
       <div>URL:
-        <a href="#"> {{post.url}} </a>
+        <a [href]="post.url"> {{post.url}} </a>
       </div>
       <div>
         <small class="text-muted">{{post.keywords}}</small>
@@ -50,15 +50,8 @@
 
   </div>
 
-  <nav aria-label="Page navigation example">
-
-    <button class="btn btn-primary"> Current page: {{ currentPage }}</button>
-    <button class="btn btn-primary"> Total pages: {{ totalPages }}</button>
-    <ul class="pagination">
-      <li class="page-item" [ngClass]="{'disabled': currentPage === 0}"><button class="page-link" href="#" (click)="previousPage()">Previous</button></li>
-      <li class="page-item" [ngClass]="{'disabled': currentPage >= totalPages}"><button class="page-link" href="#"
-          (click)="nextPage()">Next</button></li>
-    </ul>
-  </nav>
+  <ngb-pagination [collectionSize]="totalElements" [(page)]="currentPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"
+    (pageChange)="pageChange($event)" [pageSize]="pageSize" >
+  </ngb-pagination>
 
 </main>

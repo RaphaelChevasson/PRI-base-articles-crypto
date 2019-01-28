@@ -82,6 +82,9 @@ public class HalApiRequestThread implements Runnable {
                 System.out.println("DOING REQUEST FOR START --> " + start + " rows " + rows + " numFound --> " + halApiResponse.getResponse().getNumFound());
 
 
+
+
+
             } while (start < total);
 
 
@@ -123,7 +126,7 @@ public class HalApiRequestThread implements Runnable {
             post.setKeywords(new ArrayList<>(keywordsMap.values()));
         }
         try {
-            postService.savePostAndFlush(post);
+            postService.savePost(post);
         } catch (Exception e) {
             e.printStackTrace();
         }

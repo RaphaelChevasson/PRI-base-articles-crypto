@@ -1,5 +1,6 @@
 package fr.tse.fise3.pri.p002.server.service;
 
+import fr.tse.fise3.pri.p002.server.model.KnownUrl;
 import fr.tse.fise3.pri.p002.server.model.Post;
 import fr.tse.fise3.pri.p002.server.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,22 +9,21 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Service
 public class PostService {
 
     @Autowired
     private PostRepository postRepository;
 
+    @Autowired
+    private KnownUrlService knownUrlService;
+
     @Transactional(readOnly = false)
     public void savePost(Post post) {
         postRepository.save(post);
-    }
-
-    @Transactional(readOnly = false)
-    public void savePostAndFlush(Post post) {
-        postRepository.saveAndFlush(post);
+        KnownUrl knownUrl = new KnownUrl();
+        knownUrl.setUrlName(post.getUrl());
+        knownUrlService.saveUrl(knownUrl);
     }
 
     @Transactional(readOnly = true)
