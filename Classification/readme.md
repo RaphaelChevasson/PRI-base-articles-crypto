@@ -8,15 +8,18 @@
 		- sur Anaconda installer keras
 
 - Installer bibtexparser :
-	- Sur le terminal Anaconda : pip install bibtexparser
+	- Sur le terminal Anaconda : 
+		- pip install bibtexparser
 
 
 - Installer Adversary :
-	- Sur le terminal Anaconda : pip install Adversary
-								 python -m textblob.download_corpora
+	- Sur le terminal Anaconda : 
+		- pip install Adversary
+		- python -m textblob.download_corpora
 
 - Installer sklearn :
-	- Sur le terminal Anaconda : conda install scikit-learn
+	- Sur le terminal Anaconda : 
+		- conda install scikit-learn
 
 
 - Télécharger Dict2Vec :
