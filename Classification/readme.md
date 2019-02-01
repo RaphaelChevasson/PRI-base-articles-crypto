@@ -1,10 +1,10 @@
 - Installer Anaconda Navigator
 
 - Installer keras:
-	sur GPU (nvidia):
+	- sur GPU (nvidia):
 		- installer cudnn
 		- sur Anaconda installer keras-GPU
- 	sur CPU :
+ 	- sur CPU :
 		- sur Anaconda installer keras
 
 - Installer bibtexparser :
