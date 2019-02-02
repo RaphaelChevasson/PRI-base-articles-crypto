@@ -1,13 +1,13 @@
 package fr.tse.fise3.pri.p002.server.controller;
 
+import fr.tse.fise3.pri.p002.server.dto.DataSourceDTO;
 import fr.tse.fise3.pri.p002.server.dto.PostDTO;
 import fr.tse.fise3.pri.p002.server.model.Author;
+import fr.tse.fise3.pri.p002.server.model.DataSource;
 import fr.tse.fise3.pri.p002.server.model.Keyword;
 import fr.tse.fise3.pri.p002.server.model.Post;
-import fr.tse.fise3.pri.p002.server.service.HalApiService;
-import fr.tse.fise3.pri.p002.server.service.PostConsumerService;
-import fr.tse.fise3.pri.p002.server.service.PostProducerService;
-import fr.tse.fise3.pri.p002.server.service.PostService;
+import fr.tse.fise3.pri.p002.server.service.*;
+import fr.tse.fise3.pri.p002.server.thread.HalApiRequestThread;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,14 +31,16 @@ public class HomeController {
 
 
     @Autowired
-    private PostProducerService postProducerService;
+    private EPrintPostProducerService EPrintPostProducerService;
     @Autowired
-    private PostConsumerService postConsumerService;
+    private EPrintPostConsumerService EPrintPostConsumerService;
     private ModelMapper modelMapper = new ModelMapper();
     @Autowired
     private PostService postService;
     @Autowired
     private HalApiService halApiService;
+    @Autowired
+    private DataSourceService dataSourceService;
 
     private Converter<Post, PostDTO> converter;
 
@@ -80,22 +82,53 @@ public class HomeController {
         }
     }
 
+    @GetMapping("/hal/info")
+    public DataSourceDTO getHalSourceInfo() {
+
+        DataSource halDataSource = dataSourceService.getHalDataSource();
+
+        DataSourceDTO dataSourceDTO = new DataSourceDTO();
+        dataSourceDTO.setTotal(halDataSource.getTotal());
+        dataSourceDTO.setCurrentOffset(halDataSource.getCurrentOffset());
+        dataSourceDTO.setCreateDate(halDataSource.getCreateDate());
+        dataSourceDTO.setModifyDate(halDataSource.getModifyDate());
+
+        dataSourceDTO.setStatus(HalApiRequestThread.isRunning());
+
+        return dataSourceDTO;
+    }
+
+    @GetMapping("/eprint/info")
+    public DataSourceDTO getEPrintSourceInfo() {
+
+        DataSource ePrintDataSource = dataSourceService.getEPrintDataSource();
+
+        DataSourceDTO dataSourceDTO = new DataSourceDTO();
+        dataSourceDTO.setTotal(ePrintDataSource.getTotal());
+        dataSourceDTO.setCurrentOffset(ePrintDataSource.getCurrentOffset());
+        dataSourceDTO.setCreateDate(ePrintDataSource.getCreateDate());
+        dataSourceDTO.setModifyDate(ePrintDataSource.getModifyDate());
+//        dataSourceDTO.setStatus(HalApiRequestThread.isRunning());
+
+        return dataSourceDTO;
+    }
+
 
     @GetMapping("/start")
     public String start() {
 
-        BlockingQueue<Post> postBlockingQueue = new ArrayBlockingQueue<Post>(100);
-        Thread postProducerThread = new Thread(postProducerService);
-        Thread postConsumerThread = new Thread(postConsumerService);
+        if (!HalApiRequestThread.isRunning()) {
+            BlockingQueue<Post> postBlockingQueue = new ArrayBlockingQueue<Post>(100);
+            Thread postProducerThread = new Thread(EPrintPostProducerService);
+            Thread postConsumerThread = new Thread(EPrintPostConsumerService);
+            postProducerThread.start();
+            postConsumerThread.start();
+            halApiService.start();
+            return "Start";
 
-        postProducerThread.start();
-        postConsumerThread.start();
-
-
-        halApiService.start();
-
-
-        return "Start";
+        } else {
+            return "is already running";
+        }
 
 
     }

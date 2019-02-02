@@ -22,7 +22,7 @@ public class PostService {
     public void savePost(Post post) {
         postRepository.save(post);
         KnownUrl knownUrl = new KnownUrl();
-        knownUrl.setUrlName(post.getUrl());
+        knownUrl.setUrlName((String)post.getUrl());
         knownUrlService.saveUrl(knownUrl);
     }
 

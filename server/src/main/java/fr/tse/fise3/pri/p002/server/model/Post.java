@@ -34,6 +34,7 @@ public class Post implements Serializable {
     @Lob
     private String title;
 
+    @Lob
     private String url;
 
     //bi-directional many-to-many association to Author
@@ -74,6 +75,12 @@ public class Post implements Serializable {
     }
     )
     private List<Keyword> keywords;
+
+    //bi-directional many-to-one association to DataSource
+    @ManyToOne
+    @JoinColumn(name = "SOURCE_NAME")
+    private DataSource dataSource;
+
 
     public Post() {
     }
@@ -150,4 +157,11 @@ public class Post implements Serializable {
         this.keywords = keywords;
     }
 
+    public DataSource getDataSource() {
+        return dataSource;
+    }
+
+    public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 }

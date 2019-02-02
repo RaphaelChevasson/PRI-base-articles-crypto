@@ -1,0 +1,51 @@
+<form (submit)="search(searchForm)" #searchForm="ngForm" class="p-5 m-5 text-center" style="background-color: rgba(0,0,0,0.3); color: #f5f5f5">
+    <h2 class="mb-5">Publications research</h2>
+    <div class="form-group">
+      <input [(ngModel)]="searchText" name="searchText" type="text" class="form-control" id="searchInput" placeholder="Search"
+        #searchInput required>
+    </div>
+
+    <div class="form-group row justify-content-center">
+
+      <div class="form-check mb-2 ml-2 mr-2">
+        <input type="radio" class="form-check-input" id="titleCheckInput" name="searchBy" [(ngModel)]="searchBy" value="title">
+        <label class="form-check-label" for="titleCheckInput">Title</label>
+      </div>
+
+      <div class="form-check mb-2 ml-2 mr-2">
+        <input name="searchBy" type="radio" class="form-check-input" id="authorCheckInput" [(ngModel)]="searchBy" value="author">
+        <label class="form-check-label" for="authorCheckInput">Author</label>
+      </div>
+
+      <div class="form-check mb-2 ml-2 mr-2">
+        <input type="radio" class="form-check-input" id="keywordsCheckInput" name="searchBy" [(ngModel)]="searchBy"
+          value="keywords">
+        <label class="form-check-label" for="keywordsCheckInput">Keywords</label>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block">Start</button>
+  </form>
+
+
+  <div class="list-group">
+
+    <a *ngFor="let post of postList" href="#" class=" mb-3 list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1"> {{post.title}}</h5>
+        <small>{{post.date}}</small>
+      </div>
+      <div>URL:
+        <a [href]="post.url"> {{post.url}} </a>
+      </div>
+      <div>
+        <small class="text-muted">{{post.keywords}}</small>
+      </div>
+      <small class="text-muted">{{post.authors}}</small>
+    </a>
+
+  </div>
+
+  <ngb-pagination [collectionSize]="totalElements" [(page)]="currentPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"
+    (pageChange)="pageChange($event)" [pageSize]="pageSize" >
+  </ngb-pagination>

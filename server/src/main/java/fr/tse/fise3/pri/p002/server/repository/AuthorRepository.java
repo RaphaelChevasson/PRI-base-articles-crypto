@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface AuthorRepository extends JpaRepository<Author, BigInteger> {
 
-    public Optional<Author> findByAuthorName(String name);
+    Optional<Author> findByAuthorName(String name);
 
 }

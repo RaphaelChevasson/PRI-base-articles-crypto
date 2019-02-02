@@ -1,0 +1,37 @@
+<div class="card my-3">
+  <div class="card-body">
+    <p class="card-title alert alert-primary">HAL API</p>
+    <p>Last updated date: <strong>{{ halInfo?.modifyDate }}</strong></p>
+    <p>Current offset: <strong>{{ halInfo?.currentOffset }}</strong></p>
+    <p>Total: <strong>{{ halInfo?.total }}</strong> </p>
+    <p>Status: <strong> {{ halInfo?.status }} </strong> </p>
+    <div>
+      Try to continue from offset
+      <button class="btn btn-primary mr-2"><i class=" material-icons"> play_circle_outline</i></button>
+    </div>
+    <div class="my-3">
+      Restart
+      <button class="btn btn-danger"><i class=" material-icons"> settings_backup_restore</i></button>
+    </div>
+  </div>
+
+</div>
+
+<div class="card my-3">
+  <div class="card-body">
+    <p class="card-title alert alert-primary">Eprint scrapper</p>
+    <p>Last updated date: <strong>{{ eprintInfo?.modifyDate }}</strong></p>
+    <p>Current offset: <strong>{{ eprintInfo?.currentOffset }}</strong></p>
+    <p>Total: <strong>{{ eprintInfo?.total }}</strong> </p>
+    <p>Status: <strong> {{ eprintInfo?.status }} </strong> </p>
+    <div>
+      Try to continue from offset
+      <button class="btn btn-primary mr-2"><i class=" material-icons"> play_circle_outline</i></button>
+    </div>
+    <div class="my-3">
+      Restart
+      <button class="btn btn-danger"><i class=" material-icons"> settings_backup_restore</i></button>
+    </div>
+  </div>
+
+</div>

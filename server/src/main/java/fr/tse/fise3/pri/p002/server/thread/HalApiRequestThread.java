@@ -3,11 +3,13 @@ package fr.tse.fise3.pri.p002.server.thread;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.tse.fise3.pri.p002.server.model.Author;
+import fr.tse.fise3.pri.p002.server.model.DataSource;
 import fr.tse.fise3.pri.p002.server.model.Keyword;
 import fr.tse.fise3.pri.p002.server.model.Post;
 import fr.tse.fise3.pri.p002.server.pojo.HalApiDoc;
 import fr.tse.fise3.pri.p002.server.pojo.HalApiResponse;
 import fr.tse.fise3.pri.p002.server.service.AuthorService;
+import fr.tse.fise3.pri.p002.server.service.DataSourceService;
 import fr.tse.fise3.pri.p002.server.service.KeywordService;
 import fr.tse.fise3.pri.p002.server.service.PostService;
 import okhttp3.OkHttpClient;
@@ -18,8 +20,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -31,8 +33,8 @@ import java.util.Map;
 @Scope("prototype")
 public class HalApiRequestThread implements Runnable {
 
-
     private static final Logger LOGGER = LoggerFactory.getLogger(HalApiRequestThread.class);
+    private static boolean running = false;
     private final OkHttpClient okHttpClient;
     private long start = 0;
     private long rows = 10000;
@@ -47,8 +49,19 @@ public class HalApiRequestThread implements Runnable {
     @Autowired
     private KeywordService keywordService;
 
+    @Autowired
+    private DataSourceService dataSourceService;
+
     public HalApiRequestThread() {
         this.okHttpClient = new OkHttpClient();
+    }
+
+    public static boolean isRunning() {
+        return running;
+    }
+
+    public static void setRunning(boolean running) {
+        HalApiRequestThread.running = running;
     }
 
     private String doRequest(String url) throws IOException {
@@ -60,6 +73,7 @@ public class HalApiRequestThread implements Runnable {
 
     @Override
     public void run() {
+        running = true;
 
         try {
 
@@ -80,20 +94,20 @@ public class HalApiRequestThread implements Runnable {
                 start = halApiResponse.getResponse().getStart() + rows;
 
                 System.out.println("DOING REQUEST FOR START --> " + start + " rows " + rows + " numFound --> " + halApiResponse.getResponse().getNumFound());
-
+                updateHalDataSource(start, halApiResponse.getResponse().getNumFound());
 
 
 
 
             } while (start < total);
 
-
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            running = false;
         }
     }
 
-    @Transactional(readOnly = false)
     private void saveHalApiDoc(HalApiDoc halApiDoc) {
         Post post = new Post();
 
@@ -125,10 +139,21 @@ public class HalApiRequestThread implements Runnable {
             }
             post.setKeywords(new ArrayList<>(keywordsMap.values()));
         }
+        post.setDataSource(dataSourceService.findByName(DataSourceService.SOURCE_HAL).orElseThrow(
+                () -> new ResourceNotFoundException("Hal source doesn't exist")
+        ));
         try {
             postService.savePost(post);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    private void updateHalDataSource(long offset, long total) {
+        DataSource halDataSource = dataSourceService.getHalDataSource();
+        halDataSource.setTotal(total);
+        halDataSource.setCurrentOffset(offset);
+        dataSourceService.saveDataSource(halDataSource);
+    }
+
 }

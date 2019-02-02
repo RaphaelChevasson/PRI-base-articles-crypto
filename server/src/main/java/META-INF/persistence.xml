@@ -6,6 +6,7 @@
 		<class>fr.tse.fise3.pri.p002.server.model.Keyword</class>
 		<class>fr.tse.fise3.pri.p002.server.model.Post</class>
 		<class>fr.tse.fise3.pri.p002.server.model.KnownUrl</class>
+		<class>fr.tse.fise3.pri.p002.server.model.DataSource</class>
 
 	</persistence-unit>
 </persistence>

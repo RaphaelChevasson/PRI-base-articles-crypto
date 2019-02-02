@@ -1,6 +1,7 @@
 package fr.tse.fise3.pri.p002.server.service;
 
 import fr.tse.fise3.pri.p002.server.model.Author;
+import fr.tse.fise3.pri.p002.server.model.DataSource;
 import fr.tse.fise3.pri.p002.server.model.Keyword;
 import fr.tse.fise3.pri.p002.server.model.Post;
 import org.apache.commons.lang.StringUtils;
@@ -17,7 +18,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 @Service
-public class PostProducerService implements Runnable {
+public class EPrintPostProducerService implements Runnable {
     static final BlockingQueue<Post> POST_BLOCKING_QUEUE = new ArrayBlockingQueue<>(100);
     static Post POST_POISON_PILL = new Post();
 
@@ -30,7 +31,10 @@ public class PostProducerService implements Runnable {
     @Autowired
     private PostService postService;
 
-    public PostProducerService() {
+    @Autowired
+    private DataSourceService dataSourceService;
+
+    public EPrintPostProducerService() {
     }
 
     public void run() {
@@ -39,7 +43,11 @@ public class PostProducerService implements Runnable {
             Document document = Jsoup.connect("https://eprint.iacr.org/complete/").get();
 
             Elements elements = document.select("body > dl > dt > a:nth-child(1)");
-            int i = 0;
+
+            DataSource ePrintDataSource = dataSourceService.getEPrintDataSource();
+            ePrintDataSource.setTotal(elements.size());
+            dataSourceService.saveDataSource(ePrintDataSource);
+
             for (Element element : elements) {
                 String postUrl = "https://eprint.iacr.org" + element.attr("href");
                 Document pageDocument = Jsoup.connect(postUrl).get();
@@ -87,13 +95,10 @@ public class PostProducerService implements Runnable {
                     }
                 }
 
+                post.setDataSource(dataSourceService.getEPrintDataSource());
                 POST_BLOCKING_QUEUE.put(post);
-
-                if (++i == 500) {
-                    POST_BLOCKING_QUEUE.put(POST_POISON_PILL);
-                    break;
-                }
             }
+            POST_BLOCKING_QUEUE.put(POST_POISON_PILL);
         } catch (Exception e) {
             e.printStackTrace();
         }
