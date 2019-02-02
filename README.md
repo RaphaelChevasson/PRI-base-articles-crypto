@@ -10,7 +10,7 @@ Tutor: ...
 
 < drive link>
 
-Then, follow the setup steps in [the classification readme](blob/master/Classification/readme.md)
+Then, follow the setup steps in [the classification readme](Classification/readme.md)
 
 ## OR from source
 
@@ -24,7 +24,7 @@ Clone this repo and setups the differents parts:
 
 ### Setup Classification
 
-Follow the setup steps in [the classification readme](blob/master/Classification/readme.md)
+Follow the setup steps in [the classification readme](Classification/readme.md)
 
 # Usage
 
