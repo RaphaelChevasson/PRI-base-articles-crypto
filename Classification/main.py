@@ -1,7 +1,7 @@
-# Import dependencies
+### Import dependencies
 
 
-# Flush prints by default so they are displayed right away in console
+# Make print function flush by default so it is displayed right away in console
 normal_print = print
 def print(*args, **kwargs):
     if 'flush' not in kwargs.items():
@@ -19,7 +19,7 @@ from Predict import predict
 print("took", round(time.time() - t1), "s to load dependencies")
 
 
-# Classify the prints
+### Classify the articles
 
 
 print("\nLoading articles from databaes..."); t1 = time.time()

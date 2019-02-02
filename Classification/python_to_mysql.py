@@ -1,4 +1,4 @@
-# Database configuration
+### Database configuration
 
 
 config = {
@@ -12,7 +12,7 @@ config = {
 Categories = ["Others", "Crypto"] # These are added to the database if not present
 
 
-# Database queries
+### Database queries
 
 
 posts_query = "SELECT post_id, title, date, url, book_title FROM posts"
@@ -29,7 +29,7 @@ set_post_category_query = "INSERT INTO posts_categories (POST_ID, CATEGORY_ID) V
 delete_post_category_query = "DELETE FROM posts_categories WHERE POST_ID = {}"
 
 
-# Helper functions
+### Helper functions
 
 
 # You need to pip install mysql-connector-python
@@ -91,7 +91,7 @@ def query(query, fetch=True, close_connexion=True, limit_count=None, limit_offse
         return result
 
 
-# Database functions : get data
+### Database functions : get data
 
 
 def get_prints(limit=None):
@@ -142,7 +142,7 @@ def get_categories(debug = False):
     return {name: id_ for name, id_ in zip(Category_names, Category_ids)}
 
 
-# Database functions : set data
+### Database functions : set data
 
 
 Database_categories = None
@@ -209,7 +209,7 @@ def set_print_categories(Post_ids, Category_names):
     disconnect()
 
 
-# Debugging functions :
+### Debugging functions
 
 
 def print_all_articles(limit=None):
