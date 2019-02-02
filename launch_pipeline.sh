@@ -3,11 +3,11 @@ anaconda_path="C:\anaconda3" # only for windows, put yours here
 
 
 
-printf "\n---\n Searching for new publications\n---\n\n"
+printf "\n---\n Searching for new publications (Ctrl+c to abort this step)\n---\n\n"
 java -jar server-0.0.1-SNAPSHOT.jar
 
 
-printf "\n---\n Classifying new publications\n---\n\n"
+printf "\n---\n Classifying new publications (Ctrl+c to abort this step)\n---\n\n"
 
 # activate python env
 if [[ "$OSTYPE" == "msys" ]]; then # windows
@@ -21,7 +21,9 @@ else                               # linux
 fi
 
 # run python script
-python test.py
+cd Classification
+python main.py
+cd ..
 
 # deactivate python env
 if [[ "$OSTYPE" == "msys" ]]; then # windows
