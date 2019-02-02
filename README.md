@@ -1,20 +1,20 @@
 # PRI-base-articles-crypto
-Automatic generation of a list of post-quantum cryptography scientific publications
-A Télécom Saint-Etienne project by ...
-Client: ...
+Automatic generation of a list of post-quantum cryptography scientific publications  
+A Télécom Saint-Etienne project by ...  
+Client: ...  
 Tutor: ...
 
 # Installation
 
 ## EITHER from binaries
 
-<drive link>
+< drive link>
 
 ## OR from source
 
 ### Downloads
 
-<clone + external downloads & dependencies>
+<clone + external downloads & dependencies)
 
 ### Setup Database
 
