@@ -10,11 +10,11 @@ Tutor: ...
 
 < drive link>
 
+Then, follow the setup steps in [the classification readme](blob/master/Classification/readme.md)
+
 ## OR from source
 
-### Downloads
-
-<clone + external downloads & dependencies>
+Clone this repo and setups the differents parts:
 
 ### Setup Database
 
@@ -24,9 +24,13 @@ Tutor: ...
 
 ### Setup Classification
 
+Follow the setup steps in [the classification readme](blob/master/Classification/readme.md)
+
 # Usage
 
 ## Launch the Extraction-Classification-Storage pipeline
+
+Launch `launch_pipeline.sh` on a terminal. If you are on windows, lauch it using [git bash](https://gitforwindows.org/)
 
 ## Launch the Frontend webserver
 
