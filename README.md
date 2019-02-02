@@ -26,11 +26,13 @@ Tutor: ...
 
 # Usage
 
-## Use the Extraction-Classification-Storage pipeline
+## Launch the Extraction-Classification-Storage pipeline
 
-## Setup Frontend webserver
+## Launch the Frontend webserver
 
-## Setup Classification
+## Browse the list
+
+## Use the administration interface
 
 # Inquiries
 
