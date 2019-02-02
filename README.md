@@ -4,6 +4,10 @@ A Télécom Saint-Etienne project by ...
 Client: ...  
 Tutor: ...
 
+# Features
+
+< say what it can do and post a few scrennshots (at worst link to our presentation)>
+
 # Installation
 
 ## EITHER from binaries
@@ -37,6 +41,11 @@ Launch `launch_pipeline.sh` on a terminal. If you are on windows, lauch it using
 ## Browse the list
 
 ## Use the administration interface
+
+# How it works
+
+Here is a little diagram showing essential bricks of the project, the main technology they use, and how they connect together:
+< a little diagram of all the bricks, how they connect and what techno they use. Should be usefull for the presentation too>
 
 # Inquiries
 
