@@ -1,27 +1,27 @@
-- Installer Anaconda Navigator
+# Classification setup
 
-- Installer keras:
-	- sur GPU (nvidia):
-		- installer cudnn
-		- sur Anaconda installer keras-GPU
- 	- sur CPU :
-		- sur Anaconda installer keras
+- Download Dict2Vec :
+	- Download `dict2vec-vectors-dim100.vec` from  https://github.com/tca19/dict2vec
+	- Put `dict2vec-vectors-dim100.vec` in the `Classification/data/dict2vec` directory
+	
+- Download and install [Anaconda Navigator](https://www.anaconda.com/distribution/) (the python 3 version)
 
-- Installer bibtexparser :
-	- Sur le terminal Anaconda : 
-		- pip install bibtexparser
-
-
-- Installer Adversary :
-	- Sur le terminal Anaconda : 
-		- pip install Adversary
-		- python -m textblob.download_corpora
+- Install keras :
+	- on GPU (nvidia):
+		- install [cudnn](https://developer.nvidia.com/cudnn)
+		- install keras-GPU on Anaconda
+ 	- on CPU :
+		- install keras on Anaconda
 
 - Installer sklearn :
-	- Sur le terminal Anaconda : 
+	- On the anaconda prompt :
 		- conda install scikit-learn
 
-
-- Télécharger Dict2Vec :
-	- Télécharger dict2vec-vectors-dim100.vec depuis le lien : https://github.com/tca19/dict2vec
-	- Placer dict2vec-vectors-dim100.vec dans le dossier Classification/data/dict2vec
+- Installer Adversary :
+	- On the anaconda prompt :
+		- pip install Adversary
+		- python -m textblob.download_corpora
+		
+- Install bibtexparser (needed for training only) :
+	- On the anaconda prompt :
+		- pip install bibtexparser
