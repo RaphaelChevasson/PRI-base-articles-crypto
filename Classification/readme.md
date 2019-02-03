@@ -25,3 +25,13 @@
 - Install bibtexparser (needed for training only) :
 	- On the anaconda prompt :
 		- pip install bibtexparser
+
+# Classification training
+
+Use the file CassificationTraining.ipynb
+The trained model is saved in the file model.h5
+The tokenizers are also saved
+
+# Prediction
+
+To use the trained CNN, use the function predict in the file Predict.py. There is an example on how to use it in the file PredictExample.ipynb.
