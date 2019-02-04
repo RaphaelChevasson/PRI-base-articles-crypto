@@ -1,17 +1,17 @@
 # Classification setup
 
 - If you are installing via sources, download Dict2Vec (already done if you are installing via binaries):
-	- Download `dict2vec-vectors-dim100.vec` from  https://github.com/tca19/dict2vec
+	- Download `dict2vec-vectors-dim100.vec` from  https://github.com/tca19/dict2vec (go to section download pre-trained vector and click on the link to download the dimension 100 word embedding)
 	- Put `dict2vec-vectors-dim100.vec` in the `Classification/data/dict2vec` directory
 	
 - Download and install [Anaconda Navigator](https://www.anaconda.com/distribution/) (the python 3 version)
 
-- Install keras :
-	- on GPU (nvidia):
-		- install [cudnn](https://developer.nvidia.com/cudnn)
-		- install keras-GPU on Anaconda
+- Install keras :	
  	- on CPU :
 		- install keras on Anaconda
+	- OR on GPU (nvidia):
+		- install [cudnn](https://developer.nvidia.com/cudnn)
+		- install keras-GPU on Anaconda
 
 - Installer sklearn :
 	- On the anaconda prompt :
