@@ -1,6 +1,6 @@
 # Classification setup
 
-- Download Dict2Vec :
+- If you are installing via sources, download Dict2Vec (already done if you are installing via binaries):
 	- Download `dict2vec-vectors-dim100.vec` from  https://github.com/tca19/dict2vec
 	- Put `dict2vec-vectors-dim100.vec` in the `Classification/data/dict2vec` directory
 	
