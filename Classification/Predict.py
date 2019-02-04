@@ -5,13 +5,20 @@ import pickle
 import numpy as np
 
 def predict(x_title,x_keywords,x_booktitle):
+    """
+    Predict the classes of publications.
+    input:
+        The lists containing the titles, keywords and booktitles of the publications.
+    output:
+        A list containing strings representing the class predicted.
+    """
     MAX_SEQUENCE_LENGTH = 500
     NUMBER_OF_USED_METADATA = 3
     
     ### load our saved model ###
-    model = load_model('model.h5') # uncomment this
+    model = load_model('model.h5')
 
-    ### load tokenizer ###
+    ### load tokenizers ###
     tokenizer_title = Tokenizer()
     with open('tokenizer_title.pickle', 'rb') as handle:
         tokenizer_title = pickle.load(handle)
