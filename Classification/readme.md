@@ -26,13 +26,16 @@
 	- On the anaconda prompt :
 		- pip install bibtexparser
 
-# Classification training
+# Usage
 
-Use the `CassificationTraining.ipynb` jupyter notebook  
-The trained model is saved in the file `model.h5`  
-The `Tokenizers` are also saved  
+In production, the classification is used via the `launch_pipeline.sh` script (in the repo root folder). You can also:
 
-# Prediction
+## Redo the classification training
+
+Use the `CassificationTraining.ipynb` jupyter notebook.  
+The trained model is saved in the file `model.h5`, and the `Tokenizers` are also saved  
+
+## Get the prediction results directly in python
 
 To use the trained CNN, use the function predict in the file `Predict.py`.  
 There is an example on how to use it in the `PredictExample.ipynb` notebook.
