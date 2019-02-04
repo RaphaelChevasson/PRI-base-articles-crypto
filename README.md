@@ -17,9 +17,8 @@ It also provide a web interface to browse and manage the publications.
 ## EITHER from binaries
 
 - Download the project folder from here ***< TODO: insert link to folder containing clonned project + jar renamed as server.jar + dict2vec>***
-- Open a Cmd or a Terminal, cd into the folder and run : `java -jar server.jar`
-
-Then, follow the setup steps in [the classification readme](Classification/readme.md)
+- Follow the setup steps in [the classification readme](Classification/readme.md)
+- Open a Cmd or a Terminal, cd into the folder and run : `java -jar server.jar` to launch the services
 
 ## OR from source
 
