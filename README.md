@@ -16,7 +16,8 @@ It also provide a web interface to browse and manage the publications.
 
 ## EITHER from binaries
 
-- Download the project folder from here ***< TODO: insert link to folder containing clonned project + jar renamed as server.jar + dict2vec>***
+- Install a MySQL server (we suggest [MySQL Workbench](https://dev.mysql.com/downloads/workbench/))
+- Download the project folder from [here](https://drive.google.com/drive/folders/15UIyvpS-Parsxls8j62edEfAjuADWNxr?usp=sharing)
 - Follow the setup steps in [the classification readme](Classification/readme.md)
 - Open a Cmd or a Terminal, cd into the folder and run : `java -jar server.jar` to launch the services
 
@@ -30,7 +31,9 @@ git clone https://github.com/RaphaelChevasson/PRI-base-articles-crypto.git
 
 ### BackEnd :
 
-All you have to do is to open the maven project named as server on your IDE and run ServerApplication.java as a springboot application.
+First, you need to install and run a MySQL server (we suggest [MySQL Workbench](https://dev.mysql.com/downloads/workbench/)).
+
+Then, all you have to do is to open the maven project named as server on your IDE and run ServerApplication.java as a springboot application.
 
 Finally on your browser go to : http://localhost:8080/
 
