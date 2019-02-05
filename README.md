@@ -78,7 +78,8 @@ You will have the list of all the posts and you can edit or delete them.
 # How it works
 
 Here is a little diagram showing essential bricks of the project, the main technology they use, and how they connect together:
-***< a little diagram of all the bricks, how they connect and what techno they use. Should be usefull for the presentation too>***
+
+![](bloc.PNG)
 
 # Inquiries
 
