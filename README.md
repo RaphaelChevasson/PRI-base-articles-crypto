@@ -79,7 +79,7 @@ You will have the list of all the posts and you can edit or delete them.
 
 Here is a little diagram showing essential bricks of the project, the main technology they use, and how they connect together:
 
-![](.github/bloc.png)
+![](.github/diagram.png)
 
 # Inquiries
 
