@@ -119,10 +119,10 @@ public class HomeController {
 
         if (!HalApiRequestThread.isRunning()) {
             BlockingQueue<Post> postBlockingQueue = new ArrayBlockingQueue<Post>(100);
-            Thread postProducerThread = new Thread(EPrintPostProducerService);
-            Thread postConsumerThread = new Thread(EPrintPostConsumerService);
-            postProducerThread.start();
-            postConsumerThread.start();
+            //Thread postProducerThread = new Thread(EPrintPostProducerService);
+            //Thread postConsumerThread = new Thread(EPrintPostConsumerService);
+            //postProducerThread.start();
+            //postConsumerThread.start();
             halApiService.start();
             return "Start";
 

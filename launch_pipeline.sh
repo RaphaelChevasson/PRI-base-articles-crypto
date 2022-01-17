@@ -1,5 +1,5 @@
 env_name="base" # put yours here, default is "base"
-anaconda_path="C:\anaconda3" # only for windows, put yours here
+anaconda_path="C:\Users\Inymine\anaconda3" # only for windows, put yours here
 
 
 

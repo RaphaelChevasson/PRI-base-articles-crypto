@@ -21,7 +21,7 @@ public class Keyword implements Serializable {
 	@Column(name="KEYWORD_ID")
 	private BigInteger keywordId;
 
-	@Column(name="KEYWORD_NAME")
+	@Column(name="KEYWORD_NAME",columnDefinition="LONGTEXT")
 	private String keywordName;
 
 	private int reserved;

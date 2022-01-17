@@ -80,9 +80,9 @@ public class HalApiRequestThread implements Runnable {
 
             do {
 
-                String response = doRequest("http://api.archives-ouvertes.fr/search/?q=*:*&wt=json&fl=uri_s,label_s," +
-                        "title_s,authEmail_s,abstract_s,keyword_s,authAlphaLastNameFirstNameIdHal_fs,submittedDate_tdate&" +
-                        "sort=docid%20asc&start=" + start + "&rows=" + rows);
+                String response = doRequest("https://api.archives-ouvertes.fr/search?q=code-based&&cryptography&wt=json&fl=uri_s,label_s," +
+                        "title_s,authEmail_s,abstract_s,keyword_s,authAlphaLastNameFirstNameIdHal_fs,submittedDate_tdate&" );
+                        //+ "sort=docid%20asc&start=" + start + "&rows=" + rows);
 
                 ObjectMapper objectMapper = new ObjectMapper();
                 HalApiResponse halApiResponse = objectMapper.readValue(response, HalApiResponse.class);

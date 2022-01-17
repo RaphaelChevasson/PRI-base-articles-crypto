@@ -20,7 +20,7 @@ public class Author implements Serializable {
     @Column(name = "AUTHOR_ID")
     private BigInteger authorId;
 
-    @Column(name = "AUTHOR_NAME")
+    @Column(name = "AUTHOR_NAME", columnDefinition="LONGTEXT")
     private String authorName;
 
     //bi-directional many-to-many association to Post

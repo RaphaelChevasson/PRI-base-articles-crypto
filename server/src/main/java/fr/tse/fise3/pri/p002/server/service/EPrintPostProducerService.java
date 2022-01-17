@@ -1,5 +1,6 @@
 package fr.tse.fise3.pri.p002.server.service;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import fr.tse.fise3.pri.p002.server.model.Author;
 import fr.tse.fise3.pri.p002.server.model.DataSource;
 import fr.tse.fise3.pri.p002.server.model.Keyword;
@@ -56,7 +57,7 @@ public class EPrintPostProducerService implements Runnable {
                 Elements pageBody = pageDocument.select("body");
 
                 String title = pageDocument.select("body > b").first().text().toLowerCase().trim();
-
+                System.out.println(title);
                 if (postService.postExistsByUrl(postUrl)) {
                     System.out.println("POST_ALREADY_EXISTS_BY_URL");
                     continue;

@@ -28,7 +28,6 @@ public class EPrintPostConsumerService implements Runnable {
                 updateEPrintOffset(atomicInteger.incrementAndGet());
                 currentPost = EPrintPostProducerService.POST_BLOCKING_QUEUE.take();
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
